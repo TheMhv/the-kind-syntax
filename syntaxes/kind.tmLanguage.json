@@ -12,6 +12,9 @@
 					"include": "#comment"
 				},
 				{
+					"include": "#types"
+				},
+				{
 					"include": "#functions"
 				},
 				{
@@ -28,6 +31,48 @@
 				},
 				{
 					"include": "#support"
+				}
+			]
+		},
+		"types": {
+			"name": "meta.type.kind",
+			"begin": "(?x)\\s*(type)\\s*",
+			"end": "(\\})",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.type.kind"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.type.end.kind"
+				}
+			},
+			"patterns": [
+				{
+					"name": "support.type.kind",
+					"match": "\\s*([A-Z][a-zA-Z0-9_]*)"
+				},
+				{
+					"include": "#polymorphic-parameters"
+				},
+				{
+					"name": "punctuation.definition.type.begin.kind",
+					"match": "(\\{)"
+				},
+				{
+					"include": "#type-contructors"
+				}
+			]
+		},
+		"type-contructors": {
+			"patterns": [
+				{
+					"include": "#parameters"
+				},
+				{
+					"name": "constant.language.constructor.kind",
+					"match": "([A-Za-z][a-zA-Z0-9_]*)"
 				}
 			]
 		},
@@ -68,6 +113,10 @@
 			},
 			"patterns": [
 				{
+					"name": "entity.name.type.kind",
+					"match": "([A-Za-z][a-zA-Z0-9_]*)"
+				},
+				{
 					"match": "\\s*([A-Za-z0-9_]*)\\s*:\\s*([A-Za-z0-9_]*)\\s*",
 					"captures": {
 						"1": {
@@ -81,7 +130,7 @@
 			]
 		},
 		"parameters": {
-			"name": "meta.function.parameters.kind",
+			"name": "meta.parameters.kind",
 			"begin": "(\\()",
 			"end": "(\\))",
 			"beginCaptures": {
@@ -96,18 +145,18 @@
 			},
 			"patterns": [
 				{
-					"include": "#parameters"
-				},
-				{
 					"match": "\\s*([A-Za-z0-9_]*)\\s*:\\s*([A-Za-z0-9_]*)\\s*",
 					"captures": {
 						"1": {
-							"name": "variable.parameter.function.language.kind"
+							"name": "variable.parameter.language.kind"
 						},
 						"2": {
 							"name": "support.type.kind"
 						}
 					}
+				},
+				{
+					"include": "#polymorphic-parameters"
 				}
 			]
 		},
