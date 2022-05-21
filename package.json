@@ -1,0 +1,25 @@
+{
+    "name": "the-kind-syntax",
+    "displayName": "The Kind Syntax",
+    "description": "Kind syntax highlighter for VSCode",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.67.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "kind",
+            "aliases": ["kind", "kind"],
+            "extensions": [".kind"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "kind",
+            "scopeName": "source.kind",
+            "path": "./syntaxes/kind.tmLanguage.json"
+        }]
+    }
+}
