@@ -12,6 +12,9 @@
 					"include": "#comment"
 				},
 				{
+					"include": "#cases"
+				},
+				{
 					"include": "#types"
 				},
 				{
@@ -31,6 +34,36 @@
 				},
 				{
 					"include": "#support"
+				}
+			]
+		},
+		"cases": {
+			"name": "meta.case.function",
+			"begin": "(?x)\\s*(case)\\s*([A-Za-z0-9_. ]*)\\s*(\\{)",
+			"end": "(?x)\\s*(\\})",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.case.function.kind"
+				},
+				"2": {
+					"name": "variable.parameter.language.kind"
+				},
+				"3": {
+					"name": "punctuation.definition.case.begin.kind"
+				}
+			},
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.case.end.kind"
+				}
+			},
+			"patterns": [
+				{
+					"name": "support.constant.kind",
+					"match": "\\s*([A-Za-z0-9._ ]*)\\s*:"
+				},
+				{
+					"include": "#main"
 				}
 			]
 		},
@@ -71,7 +104,7 @@
 					"include": "#parameters"
 				},
 				{
-					"name": "constant.language.constructor.kind",
+					"name": "support.constant.kind",
 					"match": "([A-Za-z][a-zA-Z0-9_]*)"
 				}
 			]
